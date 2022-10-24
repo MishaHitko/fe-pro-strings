@@ -4,7 +4,13 @@
  * @param {string} string
  * @returns {string}
  */
-export const replaceZAndVFromString = (string) => {};
+export const replaceZAndVFromString = (string) => {
+	for(count = 0; count <= string.length; count++) {
+		string = string.replace('z', '*');
+		string = string.replace('v', '*');
+	}
+	return string; 
+};
 
 /**
  * Функция должна принять 3 аргумента и все строки. Мы передаем строку,
@@ -16,7 +22,15 @@ export const replaceZAndVFromString = (string) => {};
  * @param {string} newWord
  * @returns {string}
  */
-export const changeWord = (string, word, newWord) => {};
+export const changeWord = (string, word, newWord) => {
+	if(string.indexOf(word) > 0) {
+		const position = string.indexOf(word);
+		let result = `${string.slice(0, position)}${newWord}${string.slice(position + word.length)}`;
+		return result;
+	} else {
+		return string;
+	}
+};
 
 /**
  * Должна вернуть строку(1 аргумент) на обрезанную по длине(2 аргумент, число)
@@ -24,7 +38,10 @@ export const changeWord = (string, word, newWord) => {};
  * @param {number} length
  * @returns {string}
  */
-export const truncate = (string, length) => {};
+export const truncate = (string, length) => {
+	let result = string.substr(0, length);
+	return result;
+};
 
 /**
  * Принимает строку в первом аргументе, и символ во втором
@@ -37,7 +54,16 @@ export const truncate = (string, length) => {};
  * @param {string} symbol
  * @returns {number}
  */
-export const quantityOfSymbols = (string, symbol) => {};
+export const quantityOfSymbols = (string, symbol) => {
+	let result = 0;
+	for(let count = 0; count < string.length; count += 1) {
+		const word = string[count];
+		if(word.toLowerCase() === symbol.toLowerCase()) {
+			result += 1;
+		}
+	}
+	return result;
+};
 
 /**
  * Принимает строку в первом аргументе, и символ во втором
@@ -54,4 +80,19 @@ export const quantityOfSymbols = (string, symbol) => {};
  * @param {string} symbol
  * @returns {number}
  */
-export const quantityOfSymbolsWithIndexOf = (string, symbol) => {};
+export const quantityOfSymbolsWithIndexOf = (string, symbol) => {
+	let result = 0;
+	let count = 0;
+	const str = string.toLowerCase();
+	const symb = symbol.toLowerCase();
+	while(true) {
+		let position = str.indexOf(symb, count);
+		if(position <= string.length && position >= 0) {
+			count = position + 1;
+			result += 1;
+		} else {
+			break;
+		}
+	}
+	return result;
+};
