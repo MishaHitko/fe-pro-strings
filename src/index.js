@@ -5,7 +5,7 @@
  * @returns {string}
  */
 export const replaceZAndVFromString = (string) => {
-	for(count = 0; count <= string.length; count++) {
+	for(let count = 0; count <= string.length; count++) {
 		string = string.replace('z', '*');
 		string = string.replace('v', '*');
 	}
